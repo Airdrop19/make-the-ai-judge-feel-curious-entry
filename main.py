@@ -14,6 +14,8 @@ ENTRY_TEXT = (
 
 
 def main() -> None:
+    if not (1 <= len(ENTRY_TEXT) <= 280) or not ENTRY_TEXT.strip():
+        raise ValueError("entry text must be 1-280 characters and not only whitespace")
     output_path = Path(os.environ.get("ENTRY_OUTPUT", "/output/entry.txt"))
     output_path.parent.mkdir(parents=True, exist_ok=True)
     # Write exactly the entry text as UTF-8, no trailing newline.
